@@ -1,24 +1,8 @@
-# Blimpy::Cucumber
+# Blimpy for Cucumber
 
-TODO: Write a gem description
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'blimpy-cucumber'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install blimpy-cucumber
-
-## Usage
-
-TODO: Write usage instructions here
+This gem helps incorporate [Blimpy](https://github.com/rtyler/blimpy) with [Cucumber](http://cukes.info) for
+integration testing with a VM running on any cloud that Blimpy supports.
 
 ## Contributing
 
