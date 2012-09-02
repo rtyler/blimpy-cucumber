@@ -4,8 +4,8 @@ require File.expand_path('../lib/blimpy/cucumber/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["R. Tyler Croy"]
   gem.email         = ["tyler@monkeypox.org"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "Cucumber steps for testing with Blimpy"
+  gem.summary       = "This gem helps spin up and down VMs with Blimpy from within Cucumber tests"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
