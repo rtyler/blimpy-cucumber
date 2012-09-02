@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "blimpy-cucumber"
   gem.require_paths = ["lib"]
   gem.version       = Blimpy::Cucumber::VERSION
+
+  gem.add_dependency('blimpy', '~> 0.6.0')
 end
