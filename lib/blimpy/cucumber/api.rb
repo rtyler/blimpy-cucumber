@@ -75,7 +75,7 @@ module Blimpy
       end
 
       def work_dir
-        File.expand_path(File.dirname(__FILE__) + "/../../tmp/cucumber")
+        File.join(Dir.pwd, 'tmp', 'cucumber')
       end
 
       def manifest_path
