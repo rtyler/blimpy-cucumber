@@ -92,6 +92,12 @@ module Blimpy
         expect(@original_dir).to_not be_nil
 
         FileUtils.mkdir_p(manifest_path)
+
+        # If we have an ignore file, we'll probably want it in the new tree as
+        # well
+        if File.exists? '.blimpignore'
+          FileUtils.ln_s(File.join(@original_dir, '.blimpignore'), '.blimpignore')
+        end
       end
     end
   end
