@@ -1,5 +1,4 @@
 require 'fileutils'
-
 require 'rubygems'
 require 'blimpy'
 
@@ -15,6 +14,22 @@ module Blimpy
 
       def destroy_vms
         @fleet.destroy unless @fleet.nil?
+      end
+
+      def vm_name
+        # If @vmname exists, we'll use that
+        return @vmname unless @vmname.nil?
+        'blimpy-cucumber-test'
+      end
+
+      def vm_flavor
+        return @vmflavor unless @vmflavor.nil?
+        'm1.small'
+      end
+
+      def vm_ports
+        return @vmports unless @vmports.nil?
+        [22, 80, 8080]
       end
 
       def vm(type='Linux')
@@ -35,12 +50,11 @@ module Blimpy
 
         @fleet = Blimpy.fleet do |fleet|
           fleet.add(:aws) do |ship|
-            ship.name = "prosody-cucumber"
-            # Use m1.small instead of a tiny
-            ship.flavor = 'm1.small'
+            ship.name = vm_name
+            ship.flavor = vm_flavor
             ship.image_id = image_id
             ship.username = username
-            ship.ports = [22, 5222, 5269]
+            ship.ports = vm_ports
             ship.region = region
             ship.livery = Blimpy::Livery::Puppet
           end
@@ -72,17 +86,6 @@ module Blimpy
         expect(@original_dir).to_not be_nil
 
         FileUtils.mkdir_p(manifest_path)
-        prosody_module = File.join(modules_path, 'prosody')
-        FileUtils.mkdir_p(prosody_module)
-
-        # Make sure all of these directories are made available in the test
-        # directory
-        ['manifests', 'templates', 'lib'].each do |linkable|
-          original = File.join(@original_dir, linkable)
-          next unless File.exists?(original)
-
-          FileUtils.ln_s(original, File.join(prosody_module, linkable))
-        end
       end
     end
   end
