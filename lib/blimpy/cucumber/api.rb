@@ -95,8 +95,9 @@ module Blimpy
 
         # If we have an ignore file, we'll probably want it in the new tree as
         # well
-        if File.exists? '.blimpignore'
-          FileUtils.ln_s(File.join(@original_dir, '.blimpignore'), '.blimpignore')
+        original_ignore = File.join(@original_dir, '.blimpignore')
+        if File.exists? original_ignore
+          FileUtils.ln_s(original_ignore, '.blimpignore')
         end
       end
     end
