@@ -75,7 +75,7 @@ module Blimpy
       end
 
       def work_dir
-        File.join(Dir.pwd, 'tmp', 'cucumber')
+        @work_dir ||= File.join(Dir.pwd, 'tmp', 'cucumber')
       end
 
       def manifest_path
