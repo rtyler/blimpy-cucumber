@@ -68,6 +68,12 @@ module Blimpy
         @resources ||= []
       end
 
+      def nodes
+        # Nodes should be an Array of strings that will be joined together to
+        # be tacked into the site.pp when the host is provisioned
+        @nodes ||= []
+      end
+
       def work_dir
         File.expand_path(File.dirname(__FILE__) + "/../../tmp/cucumber")
       end

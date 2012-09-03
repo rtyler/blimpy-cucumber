@@ -15,6 +15,10 @@ When /^I provision the host$/ do
       f.write("#{r}\n")
     end
     f.write("}\n")
+
+    nodes.each do |n|
+      f.write("#{n}\n")
+    end
   end
 
   start_vms
