@@ -9,8 +9,6 @@ Given /^I have an empty (.*?) machine$/ do |type|
 end
 
 When /^I provision the host$/ do
-  resources << "group { 'puppet' : ensure => present; }"
-
   File.open(File.join(manifest_path, 'site.pp'), 'w') do |f|
     f.write("node default {\n")
     resources.each do |r|
